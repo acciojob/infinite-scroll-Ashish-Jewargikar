@@ -1,13 +1,19 @@
-//your code here!
-const list = document.getElementById('infi-list');
-let count = 10;
+const list = document.getElementById("infi-list");
 
-list.addEventListener('scroll', () => {
-if (list.scrollTop + list.clientHeight >= list.scrollHeight) {
-for (let i = 0; i < 2; i++) {
-const listItem = document.createElement('li');
-listItem.innerText = Item ${++count};
-list.appendChild(listItem);
+// Add 10 items to the list by default
+for (let i = 1; i <= 10; i++) {
+  const item = document.createElement("li");
+  item.textContent = "Item " + i;
+  list.appendChild(item);
 }
-}
+
+// Add 2 more items when the user reaches the end of the list
+list.addEventListener("scroll", () => {
+  if (list.scrollTop + list.clientHeight >= list.scrollHeight) {
+    for (let i = 1; i <= 2; i++) {
+      const item = document.createElement("li");
+      item.textContent = "Item " + (list.children.length + i);
+      list.appendChild(item);
+    }
+  }
 });
